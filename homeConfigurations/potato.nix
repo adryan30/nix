@@ -38,6 +38,7 @@ let
           pkgs.fd
           pkgs.kail
           pkgs.rustup
+          pkgs.sl
           
           (pkgs.nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
           pkgs.monocraft
@@ -70,6 +71,9 @@ let
             pkgs.bat-extras.batgrep
             pkgs.bat-extras.batwatch
           ];
+          config = {
+            theme = "Enki-Tokyo-Night";
+          };
         };
         fzf = {
           enable = true;
@@ -89,6 +93,7 @@ let
             name = "JetBrainsMono Nerd Font Mono";
             size = 16;
           };
+          theme = "Tokyo Night Moon";
           settings = {
             cursor_shape = "block";
             disable_ligatures = "never";
@@ -138,6 +143,7 @@ let
             rebuild = "darwin-rebuild switch --flake ~/.config/nix-darwin";
             ls = "eza -l";
             man = "batman";
+            cd = "z";
           };
         };
       };
