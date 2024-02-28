@@ -39,6 +39,7 @@ let
           pkgs.kail
           pkgs.rustup
           pkgs.sl
+          pkgs.elixir
           
           (pkgs.nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
           pkgs.monocraft
