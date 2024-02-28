@@ -131,6 +131,7 @@ let
             cat = "bat";
             grep = "rg";
             hms = "home-manager switch";
+            rebuild = "darwin-rebuild switch --flake ~/.config/nix-darwin";
             ls = "eza -l";
             man = "batman";
           };
