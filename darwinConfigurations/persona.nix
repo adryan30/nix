@@ -11,7 +11,7 @@ let
     ];
     config = {
       documentation = {
-        enable = false;
+        enable = true;
       };
       nixpkgs = {
         config = { allowUnfree = true; };
@@ -28,6 +28,11 @@ let
       };
       system = {
         stateVersion = 4;
+      };
+      security = {
+        pam = {
+          enableSudoTouchIdAuth = true;
+        };
       };
     };
   };

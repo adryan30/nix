@@ -37,7 +37,11 @@ let
           pkgs.lazygit
           pkgs.fd
           pkgs.kail
+          pkgs.rustup
+          
+          (pkgs.nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
           pkgs.monocraft
+
           pkgs.discord
           pkgs.spotify
           pkgs.monitorcontrol
