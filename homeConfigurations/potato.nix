@@ -1,6 +1,10 @@
-{ inputs, ... }@flakeContext:
-let
-  homeModule = { config, lib, pkgs, ... }: {
+{inputs, ...} @ flakeContext: let
+  homeModule = {
+    config,
+    lib,
+    pkgs,
+    ...
+  }: {
     config = {
       home = {
         file = {
@@ -40,8 +44,10 @@ let
           pkgs.rustup
           pkgs.sl
           pkgs.elixir
-          
-          (pkgs.nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
+          pkgs.alejandra
+          pkgs.comma
+
+          (pkgs.nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
           pkgs.monocraft
 
           pkgs.discord
@@ -145,16 +151,19 @@ let
             ls = "eza -l";
             man = "batman";
             cd = "z";
+            nix-edit = "cd ~/.config/nix-darwin && nvim";
           };
+        };
+        lf = {
+          enable = true;
         };
       };
     };
   };
-  nixosModule = { ... }: {
+  nixosModule = {...}: {
     home-manager.users.potato = homeModule;
   };
-in
-(
+in (
   (
     inputs.home-manager.lib.homeManagerConfiguration {
       modules = [
@@ -162,5 +171,6 @@ in
       ];
       pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
     }
-  ) // { inherit nixosModule; }
+  )
+  // {inherit nixosModule;}
 )

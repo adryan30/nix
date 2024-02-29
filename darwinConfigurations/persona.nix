@@ -1,6 +1,10 @@
-{ inputs, ... }@flakeContext:
-let
-  darwinModule = { config, lib, pkgs, ... }: {
+{inputs, ...} @ flakeContext: let
+  darwinModule = {
+    config,
+    lib,
+    pkgs,
+    ...
+  }: {
     imports = [
       inputs.home-manager.darwinModules.home-manager
       inputs.self.homeConfigurations.potato.nixosModule
@@ -14,7 +18,7 @@ let
         enable = true;
       };
       nixpkgs = {
-        config = { allowUnfree = true; };
+        config = {allowUnfree = true;};
       };
       programs = {
         zsh = {
@@ -37,9 +41,9 @@ let
     };
   };
 in
-inputs.nix-darwin.lib.darwinSystem {
-  modules = [
-    darwinModule
-  ];
-  system = "aarch64-darwin";
-}
+  inputs.nix-darwin.lib.darwinSystem {
+    modules = [
+      darwinModule
+    ];
+    system = "aarch64-darwin";
+  }

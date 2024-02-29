@@ -7,18 +7,16 @@
     home-manager.url = "flake:home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs:
-    let
-      flakeContext = {
-        inherit inputs;
-      };
-    in
-    {
-      darwinConfigurations = {
-        persona = import ./darwinConfigurations/persona.nix flakeContext;
-      };
-      homeConfigurations = {
-        potato = import ./homeConfigurations/potato.nix flakeContext;
-      };
+  outputs = inputs: let
+    flakeContext = {
+      inherit inputs;
     };
+  in {
+    darwinConfigurations = {
+      persona = import ./darwinConfigurations/persona.nix flakeContext;
+    };
+    homeConfigurations = {
+      potato = import ./homeConfigurations/potato.nix flakeContext;
+    };
+  };
 }
