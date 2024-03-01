@@ -56,6 +56,7 @@
           pkgs.iina
           pkgs.iterm2
           pkgs.stats
+          pkgs.steam
         ];
         sessionVariables = {
           EDITOR = "nvim";
