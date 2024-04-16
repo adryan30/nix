@@ -25,6 +25,18 @@
           enable = true;
         };
       };
+      homebrew = {
+        enable = true;
+        brews = [
+          "ruby"
+          "opentofu"
+        ];
+        casks = [
+          "steam"
+          "parsec"
+          "bruno"
+        ];
+      };
       services = {
         nix-daemon = {
           enable = true;

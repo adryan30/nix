@@ -10,10 +10,23 @@
         file = {
           ".zshrc" = {
             text = ''
-              export PATH="''$BUN_INSTALL/bin:''$PATH"
-              export PATH="''$HOME/.krew/bin:''$PATH"
-              export PATH="''$PATH:`go env GOPATH`/bin"
-              export PATH="''$PATH:/opt/homebrew/opt/libpq/bin"
+              export PATH="$BUN_INSTALL/bin:$PATH"
+              export PATH="$HOME/.krew/bin:$PATH"
+              export PATH="$PATH:`go env GOPATH`/bin"
+              export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+              export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+              export PATH="`gem env home`/bin:$PATH"
+              export PATH="$HOME/.npm-global/bin:$PATH"
+            '';
+          };
+          ".config/starship.toml" = {
+            text = ''
+              format = """$character"""
+              right_format = """$all"""
+              continuation_prompt = '▶▶ '
+
+              [aws]
+              disabled = true
             '';
           };
         };
@@ -46,6 +59,10 @@
           pkgs.elixir
           pkgs.alejandra
           pkgs.comma
+          pkgs.temurin-bin-21
+          pkgs.tldr
+          pkgs.oci-cli
+          pkgs.kustomize
 
           (pkgs.nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
           pkgs.monocraft
@@ -56,7 +73,7 @@
           pkgs.iina
           pkgs.iterm2
           pkgs.stats
-          pkgs.steam
+          pkgs.localsend
         ];
         sessionVariables = {
           EDITOR = "nvim";
@@ -102,6 +119,9 @@
             size = 16;
           };
           theme = "Tokyo Night Moon";
+          keybindings = {
+            "ctrl+shift+b" = "send_text all \x1b[66;5u";
+          };
           settings = {
             cursor_shape = "block";
             disable_ligatures = "never";
